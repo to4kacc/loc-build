@@ -66,16 +66,6 @@ if [ -f "$NSS_PBUF" ]; then
 	cd $PKG_PATH && echo "qca-nss-pbuf has been fixed!"
 fi
 
-#修复TailScale配置文件冲突
-TS_FILE=$(find ../feeds/packages/ -maxdepth 3 -type f -wholename "*/tailscale/Makefile")
-if [ -f "$TS_FILE" ]; then
-	echo " "
-
-	sed -i '/\/files/d' $TS_FILE
-
-	cd $PKG_PATH && echo "tailscale has been fixed!"
-fi
-
 #修复Rust编译失败
 RUST_FILE=$(find ../feeds/packages/ -maxdepth 3 -type f -wholename "*/rust/Makefile")
 if [ -f "$RUST_FILE" ]; then
@@ -106,4 +96,10 @@ if [ -d *"luci-app-netspeedtest"* ]; then
 	sed -i 's/ca-certificates/ca-bundle/g' ./speedtest-cli/Makefile
 
 	cd $PKG_PATH && echo "netspeedtest has been fixed!"
+fi
+
+#修复luci-app-daed相关问题
+DAED_MAKEFILE=$(find . -maxdepth 4 -name Makefile | xargs grep -l "PKG_NAME:=daed")
+if [ -n "$DAED_MAKEFILE" ]; then
+    sed -i 's/GOEXPERIMENT=/# &/' "$DAED_MAKEFILE"
 fi
