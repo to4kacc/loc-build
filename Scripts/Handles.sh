@@ -106,7 +106,7 @@ if [ -n "$DAED_MAKEFILE" ]; then
 fi
 
 #临时修复smartdns哈希问题
-FILE="./smartdns/Makefile"
+FILE="./openwrt-smartdns/Makefile"
 
 if [ -f "$FILE" ]; then
     sed -i 's/609fec024396a3a26278ef9fe7bd49aeca478e3163fc53c699a5f402fa0320f0/f8bfb91ae0992dd62392ebb2b7d968d514f7cbc3cc6a5d975dafdd6b27bf0a0c/g' "$FILE"
