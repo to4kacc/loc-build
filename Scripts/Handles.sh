@@ -113,6 +113,7 @@ FILE="./openwrt-smartdns/Makefile"
 
 # 2. 执行替换
 sed -i "s/$OLD_HASH/$NEW_HASH/g" "$FILE"
+sed -i 's|\.\./\.\./lang/rust/rust-package\.mk|$(TOPDIR)/feeds/packages/lang/rust/rust-package.mk|g' "$FILE"
 
 # 3. 验证结果
 if grep -q "$NEW_HASH" "$FILE"; then
