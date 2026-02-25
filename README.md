@@ -1,70 +1,70 @@
-# 🚀 Loc-Build: OpenWRT 自动化流水线框架
+# 🚀 Loc-Build: OpenWRT 全自动编译流水线
 
-[![GitHub Stars](https://img.shields.io/github/stars/breeze303/loc-build?style=flat-square)](https://github.com/breeze303/loc-build/stargazers)
-[![License](https://img.shields.io/github/license/breeze303/loc-build?style=flat-square)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-7.5_Pro-green?style=flat-square)](https://github.com/breeze303/loc-build)
+[![Style](https://img.shields.io/badge/Style-Minimalist-blue?style=flat-square)](https://github.com/breeze303/loc-build)
 
-**Loc-Build** 是一款专为 OpenWRT/ImmortalWrt 打造的极致编译框架。它不仅支持 GitHub Actions 云编译，更深度优化了**本地编译体验**，提供了一个基于 TUI 的炫酷控制台，实现从环境检查、源码同步到固件智能归档的全生命周期自动化。
+**Loc-Build** 是一款面向专业用户的 OpenWRT/ImmortalWrt 极简编译框架。它通过自研的 TUI 仪表盘，将环境修复、源码同步、插件管理及定时调度整合为一体，提供丝滑的本地编译体验。
 
 ---
 
-## ⚡ 极速部署 (One-Click Bootstrap)
+## ⚡ 极速部署 (One-Click)
 
-在任何 Ubuntu/Debian 环境下，只需一行命令，即可全自动拉取项目并开启仪表盘：
+在任意 Ubuntu/Debian 终端运行：
 
 ```bash
-bash <(curl -sL https://raw.githubusercontent.com/breeze303/loc-build/main/install.sh)
+bash <(curl -sL https://raw.githubusercontent.com/breeze303/loc-build/main/Install.sh)
 ```
 
 ---
 
-## ✨ 核心特性
+## ✨ 核心亮点
 
-- **🌈 极光视觉仪表盘 (`b.sh`)**: 实时监控系统 CPU、内存及磁盘状态，模块化面板设计，让终端操作充满科技感。
-- **🛡️ 环境守卫 (Auto-Guard)**: 自动检测并一键修复编译所需的 Linux 依赖环境。
-- **⚙️ 智能化策略**: 
-  - **增量快编**: 仅编译变动部分，极致节省时间。
-  - **标准更新**: 自动重置补丁冲突，确保编译稳健。
-  - **深度清理**: 彻底重置环境，排除残留干扰。
-- **⏰ 定时任务管理**: 支持通过 TUI 界面交互式设置 `crontab` 定时编译计划，支持多机型连编。
-- **📦 智能归档 (Smart Archive)**: 编译成功后自动提取固件，根据“机型+日期”智能重命名并存放到根目录 `Firmware/`。
-- **🔄 云端联动**: 集成 GitHub Actions，支持插件版本（如 sing-box）的每日定时检测与自动更新。
+- **🌈 极简 TUI 控制台 (`Build.sh`)**: 支持箭头/数字双模操作，实时监控系统负载与内存。
+- **🛡️ 智能环境守卫**: 自动检测并一键修复编译所需的 Linux 依赖。
+- **📦 插件系统分离**: 插件管理完全配置化，核心与自定义插件互不干扰。
+- **🚀 颗粒度缓存管理**: 自由勾选要保留的缓存目录，二次编译仅需数分钟。
+- **⏰ 自动化调度**: 交互式设置定时任务，支持多机型全自动流水线。
+- **🌍 多语言支持**: 内置中英文切换，适配不同操作环境。
 
 ---
 
-## 📂 项目结构
+## 🛠️ 进阶配置指南
+
+本项目遵循“**数据与逻辑彻底分离**”原则，你只需修改 `Config/` 下的文件即可完成所有定制：
+
+### 1. 源码仓库管理 (`Config/REPOS.txt`)
+格式: `显示名称 仓库URL`
+> 示例: `Lean https://github.com/coolsnowwolf/lede.git`
+
+### 2. 插件列表管理
+- **核心插件**: `Config/CORE_PACKAGES.txt`
+- **自定义插件**: `Config/CUSTOM_PACKAGES.txt`
+> 格式: `包名 仓库 分支 [特殊模式] [冲突包]`
+
+### 3. 全局公用配置 (`Config/GENERAL.txt`)
+这里的 `.config` 片段会自动合并到**所有**机型的编译配置中。
+
+### 4. 机型专属配置 (`Config/Profiles/`)
+将每个机型的 `.config` 文件（.txt 格式）放入此目录，仪表盘会自动识别并生成选择列表。
+
+---
+
+## 📂 目录结构
 
 ```text
 /
-├── b.sh                # 核心入口：一键自引导 & TUI 仪表盘
+├── Build.sh            # 核心控制台入口
+├── Install.sh          # 一键安装/更新引导
 ├── Scripts/
-│   ├── Update.sh       # 代码同步引擎：处理仓库/Feeds/插件更新
-│   ├── auto.sh         # 自动化执行器：非交互式流水线
-│   ├── Packages.sh     # 插件管理：自定义软件包克隆与版本升级
-│   └── Handles.sh      # 智能补丁：修复冲突与优化系统默认设置
-├── Config/
-│   ├── *.txt           # 各种机型的 .config 配置文件
-│   └── auto.conf       # 自动化流水线的个性化参数
-└── Firmware/           # 编译产出目录 (自动生成)
+│   ├── Ui.sh           # 视觉引擎 & 翻译字典
+│   ├── Auto.sh         # 自动化流水线执行器
+│   ├── Packages.sh     # 插件下载引擎
+│   └── Update.sh       # 代码同步工具
+└── Config/
+    ├── Auto.conf       # 自动化流水线持久化参数
+    └── Profiles/       # 机型配置文件存放处
 ```
 
 ---
 
-## 🛠️ 快速上手
-
-### 1. 交互式编译
-运行 `./b.sh`，选择 `[1]` 按照引导选择仓库、分支和机型即可开始。
-
-### 2. 自动化管理
-进入 `./b.sh` 选项 `[3]`：
-- 配置你想自动编译的仓库和多个机型。
-- 设定定时运行的时间点。
-- 通过“查看实时日志”功能监控后台进度。
-
-### 3. 手动同步
-如果你只想更新源码和插件而不进行编译，选择选项 `[2]` 即可。
-
----
-
-## 📝 贡献与支持
-
-如果你在使用过程中发现 Bug 或有更好的视觉建议，欢迎提交 Issue 或 Pull Request。
+**Built with ❤️ by breeze303 | Powered by Loc-Build V7.5**

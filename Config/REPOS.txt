@@ -1,4 +1,14 @@
-ImmortalWrt (官方)|https://github.com/immortalwrt/immortalwrt.git
-ImmortalWrt (VIKINGYFY)|https://github.com/VIKINGYFY/immortalwrt.git
-ImmortalWrt (ZqinKing)|https://github.com/ZqinKing/immortalwrt.git
-OpenWrt (官方)|https://github.com/openwrt/openwrt.git
+# =========================================================
+# WRT-CI 远程仓库清单
+# =========================================================
+# 格式: [显示名称] [仓库完整URL]
+# 说明: 
+#   1. 每行一个仓库，空格分隔。
+#   2. 名称中不建议包含空格。
+#   3. 以 # 开头的行为注释，会被脚本忽略。
+# =========================================================
+
+immortalwrt(官方) https://github.com/immortalwrt/immortalwrt.git
+immortalwrt(VIKINGYFY) https://github.com/VIKINGYFY/immortalwrt.git
+immortalwrt(ZqinKing) https://github.com/ZqinKing/immortalwrt.git
+OpenWrt(官方) https://github.com/openwrt/openwrt.git

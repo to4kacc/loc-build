@@ -1,0 +1,46 @@
+# =========================================================
+# WRT-CI 核心插件清单 (框架内置)
+# =========================================================
+# 格式: [插件包名] [仓库地址] [分支] [特殊模式] [冲突清理]
+# 字段说明:
+#   1. 插件包名: 最终在 package 目录下的文件夹名。
+#   2. 仓库地址: GitHub 简写 (user/repo) 或 完整 URL。
+#   3. 分支: 仓库的 Branch 名称。
+#   4. 特殊模式 (可选): 
+#      - pkg  : 从大杂烩仓库中单独提取该包名插件。
+#      - name : 强制重命名克隆后的目录为插件包名。
+#      - _    : 占位符 (当需要填写第5参数但本项为空时使用)。
+#   5. 冲突清理 (可选): 需要从 feeds 目录中删除的包名，防止编译冲突。
+# =========================================================
+
+# 核心主题
+argon sbwml/luci-theme-argon openwrt-25.12
+aurora eamonxg/luci-theme-aurora master
+aurora-config eamonxg/luci-app-aurora-config master
+kucat sirpdboy/luci-theme-kucat master
+kucat-config sirpdboy/luci-app-kucat-config master
+
+# 核心插件
+momo nikkinikki-org/OpenWrt-momo main
+nikki nikkinikki-org/OpenWrt-nikki main
+openclash vernesong/OpenClash dev pkg
+passwall Openwrt-Passwall/openwrt-passwall main pkg
+passwall2 Openwrt-Passwall/openwrt-passwall2 main pkg
+luci-app-smartdns pymumu/luci-app-smartdns master
+smartdns pymumu/openwrt-smartdns master
+lucky sirpdboy/luci-app-lucky main
+ddns-go sirpdboy/luci-app-ddns-go main
+diskman lisaac/luci-app-diskman master
+easytier EasyTier/luci-app-easytier main
+fancontrol rockjake/luci-app-fancontrol main
+gecoosac lwb1978/openwrt-gecoosac main
+mosdns sbwml/luci-app-mosdns v5 _ v2dat
+netspeedtest sirpdboy/luci-app-netspeedtest master _ "homebox speedtest"
+openlist2 sbwml/luci-app-openlist2 main
+partexp sirpdboy/luci-app-partexp main
+qbittorrent sbwml/luci-app-qbittorrent master _ "qt6base qt6tools rblibtorrent"
+qmodem FUjr/QModem main
+quickfile sbwml/luci-app-quickfile main
+viking VIKINGYFY/packages main _ "luci-app-timewol luci-app-wolplus"
+vnt lmq8267/luci-app-vnt main
+daed QiuSimons/luci-app-daed master
