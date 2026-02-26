@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =========================================================
-# WRT-CI 统一视觉引擎 (Ui.sh) - V8.0 Full-ZH/EN
+# WRT-CI 统一视觉引擎 (Ui.sh) - V10.0 Final i18n
 # =========================================================
 
 # --- 色彩定义 ---
@@ -25,17 +25,17 @@ T() {
     case "$CURRENT_LANG" in
         "en")
             case "$key" in
-                "main_menu") echo "Main Dashboard :" ;;
+                "main_menu") echo "Main Dashboard Console :" ;;
                 "build") echo "Launch Interactive Build" ;;
-                "rebuild") echo "Rebuild Last Session" ;;
+                "rebuild") echo "Rebuild Last Model Session" ;;
                 "sync") echo "Sync Assets & Feeds" ;;
-                "timer") echo "Timer & Automation" ;;
-                "pkg") echo "Package Management" ;;
-                "self") echo "Update Framework Script" ;;
-                "env") echo "Initialize Build Env" ;;
+                "timer") echo "Automation & Scheduler" ;;
+                "pkg") echo "Package Manager Center" ;;
+                "self") echo "Update Framework Scripts" ;;
+                "env") echo "Init Build Environment" ;;
                 "lang") echo "Language (中文)" ;;
-                "exit") echo "Exit Console" ;;
-                "source") echo "Source Repo" ;;
+                "exit") echo "Exit and Close Dashboard" ;;
+                "source") echo "Source Repository" ;;
                 "branch") echo "Build Branch" ;;
                 "model") echo "Target Model" ;;
                 "strategy") echo "Build Strategy" ;;
@@ -52,55 +52,53 @@ T() {
                 "load") echo "LOAD" ;;
                 "mem") echo "MEM" ;;
                 "disk") echo "DISK" ;;
-                "step1") echo "Source Sync" ;;
-                "step2") echo "Feeds Update" ;;
-                "step3") echo "Package Sync" ;;
-                "step4") echo "Config Injection" ;;
-                "step5") echo "Core Building" ;;
-                "step6") echo "Smart Archive" ;;
+                "step1") echo "Source Environment Sync" ;;
+                "step2") echo "Feed Plugins Update" ;;
+                "step3") echo "Custom Assets Loading" ;;
+                "step4") echo "Config Injection & Generation" ;;
+                "step5") echo "Parallel Core Building" ;;
+                "step6") echo "Firmware Smart Archiving" ;;
                 "dl_msg") echo "Downloading dependencies..." ;;
-                "build_msg") echo "Core engine is building..." ;;
+                "build_msg") echo "Core building in progress..." ;;
                 "hour") echo "Hour (0-23)" ;;
                 "min") echo "Min (0-59)" ;;
-                "press_enter") echo "Press Enter to continue..." ;;
-                "no_history") echo "No previous build record found." ;;
-                "set_sched") echo "Setup Cron Schedule" ;;
-                "check_task") echo "Check Active Tasks" ;;
-                "term_sched") echo "Terminate Schedule" ;;
-                "config_pipe") echo "Config Pipeline" ;;
-                "view_logs") echo "View Build Logs" ;;
+                "set_sched") echo "Set Periodic Schedule" ;;
+                "check_task") echo "Check Active Plans" ;;
+                "term_sched") echo "Terminate All Tasks" ;;
+                "config_pipe") echo "Config Pipeline Setup" ;;
+                "view_logs") echo "View Real-time Logs" ;;
+                "view_logs_hint") echo "Reading logs... Press Ctrl+C to return to dashboard." ;;
                 "view_list") echo "View Package List" ;;
                 "add_pkg") echo "Add Custom Package" ;;
                 "del_pkg") echo "Delete Package" ;;
                 "edit_file") echo "Manual Edit Config" ;;
-                "ver_update") echo "Update Pkg Versions" ;;
-                "mod_source") echo "Modify Remote Source" ;;
-                "mod_branch") echo "Modify Target Branch" ;;
-                "manage_model") echo "Manage Build List" ;;
-                "config_cache") echo "Cache Retention Policy" ;;
+                "ver_update") echo "Update Package Versions" ;;
                 "save_exit") echo "Save and Return" ;;
-                "discard") echo "Discard and Back" ;;
+                "discard") echo "Discard Changes" ;;
+                "mod_source") echo "Modify Remote Source" ;;
+                "manage_model") echo "Manage Machine List" ;;
+                "config_cache") echo "Cache Retention Policy" ;;
                 *) echo "$key" ;;
             esac ;;
-        *) # 全量汉化
+        *) # 全量中文汉化
             case "$key" in
                 "main_menu") echo "主菜单控制台 :" ;;
-                "build") echo "启动全流程交互编译" ;;
+                "build") echo "启动交互编译流程" ;;
                 "rebuild") echo "再次编译上个机型" ;;
                 "sync") echo "仅同步代码与插件" ;;
                 "timer") echo "自动化调度管理" ;;
-                "pkg") echo "扩展插件中心" ;;
+                "pkg") echo "扩展插件管理中心" ;;
                 "self") echo "检查系统脚本更新" ;;
                 "env") echo "初始化编译环境" ;;
                 "lang") echo "切换显示语言 (English)" ;;
-                "exit") echo "结束当前会话" ;;
+                "exit") echo "结束并关闭当前会话" ;;
                 "source") echo "源码仓库" ;;
                 "branch") echo "目标分支" ;;
                 "model") echo "目标机型" ;;
                 "strategy") echo "选择编译策略" ;;
-                "fast") echo "增量快编" ;;
-                "stable") echo "标准更新" ;;
-                "clean") echo "深度清理" ;;
+                "fast") echo "增量快编 (极速)" ;;
+                "stable") echo "标准更新 (稳健)" ;;
+                "clean") echo "深度清理 (彻底)" ;;
                 "back") echo "返回" ;;
                 "cancel") echo "取消并返回" ;;
                 "manual") echo "手动输入" ;;
@@ -121,36 +119,33 @@ T() {
                 "build_msg") echo "核心引擎正在全力运转..." ;;
                 "hour") echo "时 (0-23)" ;;
                 "min") echo "分 (0-59)" ;;
-                "press_enter") echo "按回车键继续..." ;;
-                "no_history") echo "未发现历史编译记录。" ;;
                 "set_sched") echo "设定周期执行计划" ;;
                 "check_task") echo "检查当前活跃计划" ;;
                 "term_sched") echo "终止所有计划任务" ;;
                 "config_pipe") echo "配置自动化流水线" ;;
                 "view_logs") echo "查看实时进程日志" ;;
+                "view_logs_hint") echo "正在读取实时日志... 请按 Ctrl+C 停止查看并返回菜单。" ;;
                 "view_list") echo "查看完整插件清单" ;;
                 "add_pkg") echo "交互添加自定义插件" ;;
                 "del_pkg") echo "删除已有自定义插件" ;;
                 "edit_file") echo "手动编辑配置文件" ;;
                 "ver_update") echo "检查并更新软件包版本" ;;
-                "mod_source") echo "修改远程仓库地址" ;;
-                "mod_branch") echo "修改目标编译分支" ;;
-                "manage_model") echo "管理待编译机型列表" ;;
-                "config_cache") echo "配置缓存保留策略" ;;
                 "save_exit") echo "保存配置并返回" ;;
                 "discard") echo "放弃修改并返回" ;;
+                "mod_source") echo "修改远程仓库地址" ;;
+                "manage_model") echo "管理待编译机型列表" ;;
+                "config_cache") echo "配置缓存保留策略" ;;
                 *) echo "$key" ;;
             esac ;;
     esac
 }
 
-# --- 视觉组件 ---
 msg_info() { echo -e " ${BC}[$(T info)]${NC} ${BW}$1${NC}"; }
 msg_ok()   { echo -e " ${BG}[$(T done)]${NC} ${BW}$1${NC}"; }
 msg_warn() { echo -e " ${BY}[$(T warn)]${NC} ${BW}$1${NC}"; }
 msg_err()  { echo -e " ${BR}[$(T fail)]${NC} ${BW}$1${NC}"; }
-draw_line() { echo -e " ${BW}-----------------------------------------------------${NC}"; }
 msg_step() { local k="step$1"; echo -e "\n ${BP}--- STEP $1 : $(T $k) ---${NC}"; }
+draw_line() { echo -e " ${BW}-----------------------------------------------------${NC}"; }
 
 get_sys_info() { 
     local l=$(uptime | awk -F'load average:' '{print $2}' | awk -F',' '{print $1}' | xargs)
@@ -158,9 +153,9 @@ get_sys_info() {
     local f=$(grep MemFree /proc/meminfo | awk '{print $2}')
     local b=$(grep ^Buffers /proc/meminfo | awk '{print $2}')
     local c=$(grep ^Cached /proc/meminfo | awk '{print $2}')
-    local mem_pct=$(((t-f-b-c)*100/t))
-    local disk=$(df -h / | awk '/\// {print $(NF-1)}' | head -n 1)
-    echo -e " ${BC}$(T load): ${BY}$l ${BC}$(T mem): ${BY}$mem_pct% ${BC}$(T disk): ${BY}$disk${NC}"
+    local u=$((t-f-b-c)); local p=$((u*100/t))
+    local d=$(df -h / | awk '/\// {print $(NF-1)}' | head -n 1)
+    echo -e " ${BC}$(T load): ${BY}$l ${BC}$(T mem): ${BY}$p% ${BC}$(T disk): ${BY}$d${NC}"
 }
 
 select_menu() { 
@@ -173,7 +168,7 @@ select_menu() {
         done
         IFS= read -rsn1 key
         if [[ $key == $'\e' ]]; then 
-            read -rsn2 -t 0.1 n; [[ $n == "[A" ]] && ((selected--)); [[ $n == "[B" ]] && ((selected++))
+            read -rsn2 -t 0.1 next; [[ $next == "[A" ]] && ((selected--)); [[ $next == "[B" ]] && ((selected++))
             [ $selected -lt 0 ] && selected=$((${#options[@]} - 1)); [ $selected -ge ${#options[@]} ] && selected=0
         elif [[ $key =~ [1-9] ]] && [ "$key" -le "${#options[@]}" ]; then selected=$((key - 1)); break
         elif [[ $key == "q" ]]; then selected=255; break
@@ -187,7 +182,7 @@ multi_select_menu() {
     local title=$1; shift; local options=("$@"); local selected=0; local active=(); for i in "${!options[@]}"; do active[$i]=0; done
     RET_VAL=""; tput civis >&2
     while true; do 
-        echo -ne "  ${BOLD}${title}${NC} " >&2; [ "$CURRENT_LANG" == "en" ] && echo -e "${W}(Space:Toggle, Enter:Confirm, q:Back)${NC}" >&2 || echo -e "${W}(空格:勾选, Enter:确定, q:返回)${NC}" >&2
+        echo -ne "  ${BOLD}${title}${NC} " >&2; [ "$CURRENT_LANG" == "en" ] && echo -e "${W}(Space:Toggle, Enter:Done, q:Back)${NC}" >&2 || echo -e "${W}(空格:勾选, Enter:确定, q:返回)${NC}" >&2
         for i in "${!options[@]}"; do 
             local m="[ ]"; [ "${active[$i]}" -eq 1 ] && m="[${BG}X${NC}]"
             [ $i -eq $selected ] && echo -e "  ${BC}>> $m ${BOLD}${options[$i]}${NC}" >&2 || echo -e "     $m ${W}${options[$i]}${NC}" >&2
